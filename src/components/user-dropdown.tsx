@@ -15,16 +15,13 @@ import {
 } from "./ui/dropdown-menu";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
+import { User } from "@/lib/auth";
 
-export function UserDropdown() {
-  // TODO: Render real user info
-  const user = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    image: undefined,
-    role: "admin",
-  };
+interface UserDropDown {
+  user: User;
+}
 
+export function UserDropdown({ user }: UserDropDown) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -52,7 +49,8 @@ export function UserDropdown() {
           </Link>
         </DropdownMenuItem>
         {/* TODO: Hide admin item for non-admin users */}
-        <AdminItem />
+
+        {user.role === "admin" && <AdminItem />}
         <SignOutItem />
       </DropdownMenuContent>
     </DropdownMenu>

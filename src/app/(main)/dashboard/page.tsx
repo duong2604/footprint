@@ -8,16 +8,26 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { UserAvatar } from "@/components/user-avatar";
+import { User } from "@/lib/auth";
+import { getServerSession } from "@/lib/get-session";
 import { format } from "date-fns";
 import { CalendarDaysIcon, MailIcon, ShieldIcon, UserIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { unauthorized } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Dashboard",
 };
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const session = await getServerSession();
+  const user = session?.user;
+
+  if (!user) {
+    unauthorized();
+  }
+
   // TODO: Check for authentication
 
   return (
@@ -31,21 +41,18 @@ export default function DashboardPage() {
         </div>
         {/* TODO: Use actual user data */}
         <EmailVerificationAlert />
-        <ProfileInformation />
+        <ProfileInformation user={user} />
       </div>
     </main>
   );
 }
 
-function ProfileInformation() {
+interface ProfileInformationProps {
+  user: User;
+}
+
+function ProfileInformation({ user }: ProfileInformationProps) {
   // TODO: Render real user info
-  const user = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    image: undefined,
-    role: "admin",
-    createdAt: new Date(),
-  };
 
   return (
     <Card>

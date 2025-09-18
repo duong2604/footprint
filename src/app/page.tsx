@@ -19,7 +19,7 @@ export default function Home() {
           <span className="text-muted-foreground text-2xl font-bold">+</span>
           <Image
             src={betterAuthLogo}
-            alt="Better Auth logo"
+            alt="Footprint logo"
             width={80}
             height={80}
             className="border-muted rounded-full border"
