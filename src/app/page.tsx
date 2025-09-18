@@ -26,18 +26,17 @@ export default function Home() {
           />
         </div>
         <h1 className="text-3xl font-semibold sm:text-4xl">
-          Better-Auth Tutorial
+          Footprint Webpage
         </h1>
         <p className="text-muted-foreground mt-3 text-base text-balance sm:text-lg">
-          Learn how to handle authentication in Next.js using Better-Auth with
-          this tutorial by{" "}
+          Designed by{" "}
           <Link
             href="https://www.youtube.com/c/codinginflow?sub_confirmation=1"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
           >
-            Coding in Flow
+            Danny & Buggy LLC
           </Link>
         </p>
         <div className="mx-auto mt-6 flex max-w-sm flex-col gap-3 sm:flex-row sm:justify-center">
